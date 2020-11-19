@@ -1,0 +1,37 @@
+<div style="min-height: 100vh">
+  <div class="container" style="margin-top: 20px">
+    <div class="d-flex justify-content-center">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-md-5">
+            <input type="file" class="form-control" formControlName="file" />
+            <div *ngIf="form.get('file').invalid">File is required.</div>
+          </div>
+          <div class="col-md-5">
+            <input type="text" class="form-control" formControlName="name" />
+            <div *ngIf="form.get('name').invalid">Name is required.</div>
+          </div>
+          <div class="col-md-2">
+            <button type="submit" class="btn btn-primary">Add File</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <br />
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>File</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let file of files">
+          <td>{{ file.name }}</td>
+          <td>{{ file.file }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
